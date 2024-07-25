@@ -23,6 +23,10 @@ The Expense Tracker app provides a user-friendly interface to track daily expens
 ### Add Expense
 ![Add Expense](https://github.com/user-attachments/assets/fc4badba-e6be-4121-95eb-38052a00417d)
 
+### Remove Expense
+![Add Expense](https://github.com/user-attachments/assets/07ecef5b-b2af-43d2-b4d7-6bc7ff0a5044)
+
+
 ## Getting Started
 
 This project is built with Flutter, an open-source UI software development toolkit by Google. If you're new to Flutter, here are a few resources to help you get started:
