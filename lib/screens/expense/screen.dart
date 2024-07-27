@@ -28,6 +28,12 @@ class _ExpensesState extends State<Expenses> {
   _openAddExpenseOverlay() {
     showModalBottomSheet(
       isScrollControlled: true,
+      constraints: BoxConstraints.tight(
+        Size(
+          MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height,
+        ),
+      ),
       context: context,
       builder: (ctx) => NewExpense(addExpense: _addExpense),
     );
@@ -63,6 +69,7 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     Widget mainContent = const Center(
       child: Text("No expenses found. Start adding some!"),
     );
@@ -76,18 +83,32 @@ class _ExpensesState extends State<Expenses> {
         ],
         title: const Text("Flutter Expense Tracker"),
       ),
-      body: Column(
-        children: [
-          Chart(expenses: _registeredExpenses),
-          Expanded(
-            child: _registeredExpenses.isNotEmpty
-                ? ExpenseList(
-                    expenses: _registeredExpenses,
-                    removeExpense: _removeExpense)
-                : mainContent,
-          ),
-        ],
-      ),
+      body: width < 600
+          ? Column(
+              children: [
+                Chart(expenses: _registeredExpenses),
+                Expanded(
+                  child: _registeredExpenses.isNotEmpty
+                      ? ExpenseList(
+                          expenses: _registeredExpenses,
+                          removeExpense: _removeExpense,
+                        )
+                      : mainContent,
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(child: Chart(expenses: _registeredExpenses)),
+                Expanded(
+                  child: _registeredExpenses.isNotEmpty
+                      ? ExpenseList(
+                          expenses: _registeredExpenses,
+                          removeExpense: _removeExpense)
+                      : mainContent,
+                ),
+              ],
+            ),
     );
   }
 }

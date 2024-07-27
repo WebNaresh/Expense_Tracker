@@ -9,12 +9,6 @@ class ExpenseList extends StatelessWidget {
   final List<Expense> expenses;
   final void Function(Expense expense) removeExpense;
 
-  // void handleDismiss(DismissDirection direction) {
-  //   print(direction);
-  //   // if (direction == DismissDirection.startToEnd) {}
-  //   removeExpense
-  // }
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
